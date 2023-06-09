@@ -1,19 +1,20 @@
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import AuthToggle from "./AuthToggle";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const ulItems = (
     <>
       <li>
-        <a>Item 1</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a>Item 2</a>
+        <Link to="/about">About</Link>
       </li>
       <li>
-        <a>Item 3</a>
+        <Link to="/">Home</Link>
       </li>
     </>
   );
