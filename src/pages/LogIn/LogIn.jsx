@@ -11,7 +11,7 @@ const LogIn = () => {
   return (
     <div className="container mx-auto  border border-solid border-current rounded-lg p-4">
       <div className="w-full TR-custom-flex">
-        <DisplayCenter>
+        <DisplayCenter border={false}>
           {/* Log in form */}
           <div className="p2 border border-solid border-current rounded-lg p-4 min-w-[380px]">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -50,7 +50,7 @@ const LogIn = () => {
           OR
         </div>
 
-        <DisplayCenter>
+        <DisplayCenter border={false}>
           {/* Social Log In */}
           <>
             <SocialLogIn />
