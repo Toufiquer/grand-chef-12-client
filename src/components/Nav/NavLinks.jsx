@@ -18,6 +18,9 @@ const NavLinks = () => {
       <li>
         <NavLink to="/adminDashboard">AdminDashboard</NavLink>
       </li>
+      <li>
+        <NavLink to="/studentDashboard">StudentDashboard</NavLink>
+      </li>
     </>
   );
 };

@@ -5,8 +5,9 @@ import About from "../pages/About/About";
 import LogIn from "../pages/LogIn/LogIn";
 import AddTour from "../pages/AddTour/AddTour";
 import AdminDashboard from "../pages/adminDashboard/adminDashboard";
-import AdminDashboardContent from "../pages/adminDashboard/AdminDashboardContent";
 import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
+import DashBoardContent from "../components/DashBoardContent/DashBoardContent";
+import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -54,7 +55,25 @@ export const router = createBrowserRouter([
       },
       {
         path: ":id",
-        element: <AdminDashboardContent />,
+        element: <DashBoardContent />,
+      },
+    ],
+  },
+  {
+    path: "/studentDashboard",
+    element: (
+      <Main>
+        <StudentDashboard />
+      </Main>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DisplayCenter>Please Selected First</DisplayCenter>,
+      },
+      {
+        path: ":id",
+        element: <DashBoardContent />,
       },
     ],
   },
