@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import LogInRegistrationToggle from "./LogInRegistrationToggle";
-const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
+
+const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
   const {
     register,
     handleSubmit,
@@ -76,7 +77,7 @@ const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
             </label>
           )}
         </div>
-        {/* Link to Registration */}
+        {/* Link to Lon In */}
         <LogInRegistrationToggle
           isLogInPage={isLogInPage}
           logInRegistrationToggle={logInRegistrationToggle}
@@ -84,11 +85,11 @@ const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
         <input
           type="submit"
           className="btn btn-outline mt-4 w-full max-w-xs"
-          value="Log In"
+          value="Registration"
         />
       </form>
     </>
   );
 };
 
-export default LogInFrom;
+export default RegistrationFrom;

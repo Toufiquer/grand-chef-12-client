@@ -12,6 +12,12 @@ const NavLinks = () => {
       <li>
         <NavLink to="/logIn">Log In</NavLink>
       </li>
+      <li>
+        <NavLink to="/addTour">AddTour</NavLink>
+      </li>
+      <li>
+        <NavLink to="/adminDashboard">AdminDashboard</NavLink>
+      </li>
     </>
   );
 };

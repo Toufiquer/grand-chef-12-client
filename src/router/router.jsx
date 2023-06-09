@@ -3,6 +3,8 @@ import Home from "../pages/Home/Home";
 import Main from "../layout/Main/Main";
 import About from "../pages/About/About";
 import LogIn from "../pages/LogIn/LogIn";
+import AddTour from "../pages/AddTour/AddTour";
+import AdminDashboard from "../pages/adminDashboard/adminDashboard";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +27,30 @@ export const router = createBrowserRouter([
     element: (
       <Main>
         <LogIn />
+      </Main>
+    ),
+  },
+  {
+    path: "/addTour",
+    element: (
+      <Main>
+        <AddTour />
+      </Main>
+    ),
+  },
+  {
+    path: "/adminDashboard",
+    element: (
+      <Main>
+        <AdminDashboard />
+      </Main>
+    ),
+  },
+  {
+    path: "/adminDashboard/:id",
+    element: (
+      <Main>
+        <AdminDashboard />
       </Main>
     ),
   },
