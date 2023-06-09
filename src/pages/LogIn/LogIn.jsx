@@ -9,11 +9,11 @@ const LogIn = () => {
   } = useForm();
   const onSubmit = (data) => console.log(data);
   return (
-    <div className="container mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="container mx-auto  border border-solid border-current rounded-lg p-4">
+      <div className="w-full TR-custom-flex">
         <DisplayCenter>
           {/* Log in form */}
-          <div className="p2 border border-solid border-current min-w-[380px] rounded-lg p-4">
+          <div className="p2 border border-solid border-current rounded-lg p-4 min-w-[380px]">
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* include validation with required or other standard HTML validation rules */}
               <div className="form-control w-full max-w-xs">
@@ -43,9 +43,18 @@ const LogIn = () => {
             </form>
           </div>
         </DisplayCenter>
+        <div className="divider divider-horizontal TR-object-divider-horizontal">
+          OR
+        </div>
+        <div className="divider divider-vertical TR-object-divider-vertical">
+          OR
+        </div>
+
         <DisplayCenter>
           {/* Social Log In */}
-          <SocialLogIn />
+          <>
+            <SocialLogIn />
+          </>
         </DisplayCenter>
       </div>
     </div>

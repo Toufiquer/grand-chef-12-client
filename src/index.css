@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media screen and (max-width: 1023px) {
+  .TR-custom-flex {
+    display: flex;
+    flex-direction: column;
+  }
+  .TR-object-divider-horizontal {
+    display: none;
+  }
+  .TR-object-divider-vertical {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .TR-custom-flex {
+    display: flex;
+    flex-direction: row;
+  }
+  .TR-object-divider-horizontal {
+    display: flex;
+  }
+  .TR-object-divider-vertical {
+    display: none;
+  }
+}
