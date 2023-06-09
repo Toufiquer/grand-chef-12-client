@@ -1,20 +1,11 @@
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import AuthToggle from "./AuthToggle";
-import { Link, NavLink } from "react-router-dom";
+import NavLinks from "./NavLinks";
 
 const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const ulItems = (
-    <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/about">About</NavLink>
-      </li>
-    </>
-  );
+
   return (
     <div className="container mx-auto">
       <div className="navbar bg-base-100">
@@ -40,13 +31,15 @@ const Nav = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {ulItems}
+              <NavLinks />
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{ulItems}</ul>
+          <ul className="menu menu-horizontal px-1">
+            <NavLinks />
+          </ul>
         </div>
         <div className="navbar-end">
           <AuthToggle isLoggedIn={isLoggedIn} />
