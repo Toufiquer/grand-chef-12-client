@@ -1,8 +1,6 @@
-import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
-import DashBoardContent from "./DashBoardContent";
-
 import { FiSettings } from "react-icons/fi";
 import SidebarItems from "./SidebarItems";
+import { Outlet } from "react-router-dom";
 const adminDashboard = () => {
   return (
     <>
@@ -20,9 +18,7 @@ const adminDashboard = () => {
             </label>
             {/* Page content here */}
             <div className="w-full p-4">
-              <DisplayCenter>
-                <DashBoardContent />
-              </DisplayCenter>
+              <Outlet />
             </div>
           </div>
           <div className="drawer-side">

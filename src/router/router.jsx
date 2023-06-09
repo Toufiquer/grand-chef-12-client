@@ -5,6 +5,8 @@ import About from "../pages/About/About";
 import LogIn from "../pages/LogIn/LogIn";
 import AddTour from "../pages/AddTour/AddTour";
 import AdminDashboard from "../pages/adminDashboard/adminDashboard";
+import AdminDashboardContent from "../pages/adminDashboard/AdminDashboardContent";
+import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -45,13 +47,15 @@ export const router = createBrowserRouter([
         <AdminDashboard />
       </Main>
     ),
-  },
-  {
-    path: "/adminDashboard/:id",
-    element: (
-      <Main>
-        <AdminDashboard />
-      </Main>
-    ),
+    children: [
+      {
+        index: true,
+        element: <DisplayCenter>Please Selected First</DisplayCenter>,
+      },
+      {
+        path: ":id",
+        element: <AdminDashboardContent />,
+      },
+    ],
   },
 ]);
