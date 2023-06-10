@@ -2,6 +2,7 @@ import { BsFillStarFill } from "react-icons/bs";
 import Hero from "../../components/Hero/Hero";
 import Instructors from "../../components/Instructors/Instructors";
 import TopClasses from "../../components/TopClasses/TopClasses";
+import ContactUs from "../../components/ContactUs/ContactUs";
 
 const Home = () => {
   return (
@@ -15,6 +16,10 @@ const Home = () => {
         <BsFillStarFill />
       </div>
       <Instructors />
+      <div className="divider">
+        <BsFillStarFill />
+      </div>
+      <ContactUs />
     </>
   );
 };

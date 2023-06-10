@@ -9,6 +9,7 @@ import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
 import DashBoardContent from "../components/DashBoardContent/DashBoardContent";
 import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
 import NotFound from "../pages/NotFound/NotFound";
+import Instructor from "../pages/Instructor/Instructor";
 
 export const router = createBrowserRouter([
   {
@@ -20,10 +21,10 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/about",
+    path: "/instructor",
     element: (
       <Main>
-        <About />
+        <Instructor />
       </Main>
     ),
   },

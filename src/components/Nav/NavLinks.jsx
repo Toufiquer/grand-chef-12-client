@@ -17,7 +17,7 @@ const NavLinks = ({ user }) => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/instructors">Instructors</NavLink>
+        <NavLink to="/instructor">Instructor</NavLink>
       </li>
       <li>
         <NavLink to="/classes">Classes</NavLink>
