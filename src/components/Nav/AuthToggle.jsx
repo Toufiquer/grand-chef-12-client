@@ -4,6 +4,7 @@ import { useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 import Loading from "../../pages/Loading/Loading";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const AuthToggle = ({ user }) => {
@@ -22,7 +23,9 @@ const AuthToggle = ({ user }) => {
       {/* Log In || Sign Out */}
       {!user ? (
         <>
-          <a className="btn">Log In</a>
+          <Link to="logIn" className="btn">
+            Log In
+          </Link>
         </>
       ) : (
         <>

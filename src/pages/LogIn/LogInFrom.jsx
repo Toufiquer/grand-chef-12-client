@@ -6,6 +6,9 @@ import LogInRegistrationToggle from "./LogInRegistrationToggle";
 import { auth } from "../../firebase";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
+import swal from "sweetalert";
+import useGetJwt from "../../hooks/useGetJwt";
+import { useNavigate } from "react-router-dom";
 const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
   const [errMsg, setErrMsg] = useState("");
   const {
@@ -18,6 +21,13 @@ const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
     setPassType((passType) => (passType === "password" ? "text" : "password"));
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const isLoading = useGetJwt(user, "Logged In Successful");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoading) {
+      navigate("/");
+    }
+  }, [isLoading, navigate]);
   useEffect(() => {
     if (error) {
       setErrMsg(error?.message);

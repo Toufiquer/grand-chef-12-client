@@ -9,13 +9,21 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
-import swal from "sweetalert";
+import useGetJwt from "../../hooks/useGetJwt";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
   const [passErr, setPassErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const isLoading = useGetJwt(user, "Registration Successful");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoading) {
+      navigate("/");
+    }
+  }, [isLoading, navigate]);
   const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
 
   const {
@@ -61,14 +69,11 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
             phNumber: data.phNumber,
             address: data.address,
           };
-          const success = await updateProfile({
+          await updateProfile({
             ...userData,
             displayName: data.name,
             photoURL: data.photoUrl,
           });
-          if (success) {
-            swal("Good job!", "You clicked the button!", "success");
-          }
         }
       };
       runFn();

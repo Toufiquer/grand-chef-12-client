@@ -3,6 +3,8 @@ import { auth } from "../../firebase";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import Loading from "../../pages/Loading/Loading";
 import { useEffect, useState } from "react";
+import useGetJwt from "../../hooks/useGetJwt";
+import { useNavigate } from "react-router-dom";
 const SocialLogIn = () => {
   const [errMsg, setErrMsg] = useState("");
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -11,7 +13,28 @@ const SocialLogIn = () => {
       setErrMsg(error?.message);
     }
   }, [error]);
+  const isLoading = useGetJwt(user, "Logged In Successful");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoading) {
+      navigate("/");
+    }
+  }, [isLoading, navigate]);
   if (loading && !error) {
+    // useEffect(() => {
+    //   if (user) {
+    //     fetch("http://localhost:5000/jwt", {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({ email: user.user.email }),
+    //     })
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         localStorage.setItem("Token", JSON.stringify(data.result.token));
+    //         swal("Good job!", "Logged In", "successful");
+    //       });
+    //   }
+    // }, [user]);
     return <Loading />;
   }
   return (
