@@ -27,8 +27,11 @@ const AuthToggle = ({ user }) => {
       ) : (
         <>
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://tr-portfolio-0.netlify.app/assets/img/skill-2.jpg" />
+            <div title={user.displayName} className="w-10 rounded-full">
+              <img
+                alt={user.displayName}
+                src="https://tr-portfolio-0.netlify.app/assets/img/skill-2.jpg"
+              />
             </div>
           </label>
           {errMsg.length >= 3 && (

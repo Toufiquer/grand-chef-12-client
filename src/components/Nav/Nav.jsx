@@ -1,4 +1,3 @@
-
 import ThemeToggle from "./ThemeToggle";
 import AuthToggle from "./AuthToggle";
 import NavLinks from "./NavLinks";
@@ -11,7 +10,6 @@ const Nav = () => {
   if (loading && !err) {
     return <Loading />;
   }
-
   return (
     <div className="container mx-auto">
       <div className="navbar bg-base-100">
@@ -48,7 +46,7 @@ const Nav = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <AuthToggle  user={user} />
+          <AuthToggle user={user} />
           <ThemeToggle />
         </div>
       </div>
