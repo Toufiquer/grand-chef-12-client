@@ -1,7 +1,13 @@
-import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
+import Hero from "../../components/Hero/Hero";
+import TopClasses from "../../components/TopClasses/TopClasses";
 
 const Home = () => {
-  return <DisplayCenter>Home</DisplayCenter>;
+  return (
+    <>
+      <Hero />
+      <TopClasses />
+    </>
+  );
 };
 
 export default Home;

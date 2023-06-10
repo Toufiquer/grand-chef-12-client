@@ -3,6 +3,8 @@ import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import { router } from "./router/router";
 
+// Import Swiper styles
+import "swiper/css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
   <RouterProvider router={router} />

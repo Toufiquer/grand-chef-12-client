@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.TR-hero {
+  background-image: url(https://i.ibb.co/BsXpQ0z/sta-je-html.jpg);
+}
+
 @media screen and (max-width: 1023px) {
   .TR-custom-flex {
     display: flex;
