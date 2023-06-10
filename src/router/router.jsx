@@ -1,15 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Main from "../layout/Main/Main";
-import About from "../pages/About/About";
 import LogIn from "../pages/LogIn/LogIn";
-import AddTour from "../pages/AddTour/AddTour";
 import AdminDashboard from "../pages/adminDashboard/adminDashboard";
 import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
 import DashBoardContent from "../components/DashBoardContent/DashBoardContent";
 import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
 import NotFound from "../pages/NotFound/NotFound";
 import Instructor from "../pages/Instructor/Instructor";
+import ClassesInstructor from "../pages/ClassesInstructor/ClassesInstructor";
 
 export const router = createBrowserRouter([
   {
@@ -37,10 +36,10 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/addTour",
+    path: "/classes/instructor/:name",
     element: (
       <Main>
-        <AddTour />
+        <ClassesInstructor />
       </Main>
     ),
   },

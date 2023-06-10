@@ -23,7 +23,7 @@ const CardWithImg = () => {
             <strong>Name of the Classes: </strong> Class1 , Class2
           </p>
           <div className="card-actions justify-end">
-            <Link to="/classes/instructor" className="btn btn-primary">
+            <Link to="/classes/instructor/name" className="btn btn-primary">
               See Classes
             </Link>
           </div>
