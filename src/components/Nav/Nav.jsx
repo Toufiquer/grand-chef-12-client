@@ -2,9 +2,13 @@ import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import AuthToggle from "./AuthToggle";
 import NavLinks from "./NavLinks";
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  console.log(user);
 
   return (
     <div className="container mx-auto">

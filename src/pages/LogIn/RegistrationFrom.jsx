@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import LogInRegistrationToggle from "./LogInRegistrationToggle";
@@ -23,13 +23,23 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
     formState: { errors },
   } = useForm();
   const [passType, setPassType] = useState("password");
-
+  useEffect(() => {
+    if (error) {
+      setErrMsg(error?.message);
+    }
+  }, [error]);
+  useEffect(() => {
+    if (UpdateError) {
+      setErrMsg(UpdateError?.message);
+    }
+  }, [UpdateError]);
   if ((loading || updating) && !(error || UpdateError)) {
     return <Loading />;
   }
-  if (!(loading || updating) && (error || UpdateError)) {
-    setErrMsg(error?.message || UpdateError?.message);
-  }
+
+  // if (UpdateError) {
+  //   // setErrMsg(error?.UpdateError);
+  // }
   const changePassType = () =>
     setPassType((passType) => (passType === "password" ? "text" : "password"));
 
@@ -38,17 +48,19 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
       setPassErr(true);
     } else {
       setPassErr(false);
-      const userData = {
-        gender: data.gender,
-        phNumber: data.phNumber,
-        address: data.address,
-      };
+
       const runFn = async () => {
         const isCreate = await createUserWithEmailAndPassword(
           data.email,
           data.pass
         );
+        console.log(user);
         if (isCreate && user) {
+          const userData = {
+            gender: data.gender,
+            phNumber: data.phNumber,
+            address: data.address,
+          };
           const success = await updateProfile({
             ...userData,
             displayName: data.name,
@@ -60,7 +72,6 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
         }
       };
       runFn();
-      console.log(userData);
     }
   };
   return (
