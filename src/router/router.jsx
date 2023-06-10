@@ -8,6 +8,7 @@ import AdminDashboard from "../pages/adminDashboard/adminDashboard";
 import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
 import DashBoardContent from "../components/DashBoardContent/DashBoardContent";
 import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
+import NotFound from "../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -78,4 +79,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  { path: "*", element: <NotFound /> },
 ]);
