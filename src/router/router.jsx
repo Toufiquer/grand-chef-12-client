@@ -8,6 +8,7 @@ import AdminDashboard from "../pages/adminDashboard/adminDashboard";
 import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
 import DashBoardContent from "../components/DashBoardContent/DashBoardContent";
 import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
+
 export const router = createBrowserRouter([
   {
     path: "/",
