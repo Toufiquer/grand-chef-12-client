@@ -1,14 +1,16 @@
-import { useState } from "react";
+
 import ThemeToggle from "./ThemeToggle";
 import AuthToggle from "./AuthToggle";
 import NavLinks from "./NavLinks";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "../../pages/Loading/Loading";
 
 const Nav = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
-  console.log(user);
+  const [user, loading, err] = useAuthState(auth);
+  if (loading && !err) {
+    return <Loading />;
+  }
 
   return (
     <div className="container mx-auto">
@@ -46,7 +48,7 @@ const Nav = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <AuthToggle isLoggedIn={isLoggedIn} />
+          <AuthToggle  user={user} />
           <ThemeToggle />
         </div>
       </div>

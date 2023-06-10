@@ -17,6 +17,7 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
+
   const {
     register,
     handleSubmit,
@@ -54,8 +55,7 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
           data.email,
           data.pass
         );
-        console.log(user);
-        if (isCreate && user) {
+        if (isCreate) {
           const userData = {
             gender: data.gender,
             phNumber: data.phNumber,

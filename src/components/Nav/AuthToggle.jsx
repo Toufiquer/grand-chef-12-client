@@ -1,9 +1,17 @@
+/* eslint-disable react/prop-types */
+
+import { useSignOut } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
+import Loading from "../../pages/Loading/Loading";
+import { useEffect, useState } from "react";
+
 // eslint-disable-next-line react/prop-types
-const AuthToggle = ({ isLoggedIn }) => {
+const AuthToggle = ({ user }) => {
+
   return (
     <>
       {/* Log In || Sign Out */}
-      {isLoggedIn ? (
+      {!user ? (
         <>
           <a className="btn">Log In</a>
         </>
@@ -14,7 +22,12 @@ const AuthToggle = ({ isLoggedIn }) => {
               <img src="https://tr-portfolio-0.netlify.app/assets/img/skill-2.jpg" />
             </div>
           </label>
-          <a className="btn mx-2 ">Sign Out</a>
+          {errMsg.length >= 3 && (
+            <span className="label-text-alt text-red-500">{errMsg}</span>
+          )}
+          <a className="btn mx-2  " onClick={() => signOut()}>
+            Sign Out
+          </a>
         </>
       )}
     </>

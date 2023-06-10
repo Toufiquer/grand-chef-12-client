@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import LogInRegistrationToggle from "./LogInRegistrationToggle";
+import { auth } from "../../firebase";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import Loading from "../Loading/Loading";
 const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
+  const [errMsg, setErrMsg] = useState("");
   const {
     register,
     handleSubmit,
@@ -12,8 +16,19 @@ const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
   const [passType, setPassType] = useState("password");
   const changePassType = () =>
     setPassType((passType) => (passType === "password" ? "text" : "password"));
-
-  const onSubmit = (data) => console.log(data);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  useEffect(() => {
+    if (error) {
+      setErrMsg(error?.message);
+    }
+  }, [error]);
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email, data.pass);
+  };
+  if (loading && !error) {
+    return <Loading />;
+  }
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -41,7 +56,6 @@ const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
             </label>
           )}
         </div>
-
         {/* Password */}
         <div className="form-control w-full max-w-xs relative">
           <label className="label">
@@ -50,7 +64,7 @@ const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
           <input
             type={passType}
             placeholder="Your password"
-            {...register("password", { required: true })}
+            {...register("pass", { required: true })}
             className="input input-bordered w-full max-w-xs"
           />
           <div className="absolute mt-[50px] ml-[285px]">
@@ -80,7 +94,10 @@ const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
         <LogInRegistrationToggle
           isLogInPage={isLogInPage}
           logInRegistrationToggle={logInRegistrationToggle}
-        />
+        />{" "}
+        {errMsg.length >= 3 && (
+          <span className="label-text-alt text-red-500">{errMsg}</span>
+        )}
         <input
           type="submit"
           className="btn btn-outline mt-4 w-full max-w-xs"
