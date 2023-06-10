@@ -7,7 +7,16 @@ import { useEffect, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 const AuthToggle = ({ user }) => {
-
+  const [errMsg, setErrMsg] = useState("");
+  const [signOut, loading, error] = useSignOut(auth);
+  useEffect(() => {
+    if (error) {
+      setErrMsg(error?.message);
+    }
+  }, [error]);
+  if (loading && !error) {
+    return <Loading />;
+  }
   return (
     <>
       {/* Log In || Sign Out */}
