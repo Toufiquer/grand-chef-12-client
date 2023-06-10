@@ -9,6 +9,7 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
 import NotFound from "../pages/NotFound/NotFound";
 import Instructor from "../pages/Instructor/Instructor";
 import ClassesInstructor from "../pages/ClassesInstructor/ClassesInstructor";
+import Classes from "../pages/Classes/Classes";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,14 @@ export const router = createBrowserRouter([
     element: (
       <Main>
         <ClassesInstructor />
+      </Main>
+    ),
+  },
+  {
+    path: "/classes",
+    element: (
+      <Main>
+        <Classes />
       </Main>
     ),
   },
