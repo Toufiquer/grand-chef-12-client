@@ -136,7 +136,11 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
           <input
             type={passType}
             placeholder="Your password"
-            {...register("pass", { required: true })}
+            {...register("pass", {
+              required: true,
+              min: 6,
+              pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.{8,})/i,
+            })}
             className="input input-bordered w-full max-w-xs"
           />
           <div className="absolute mt-[50px] ml-[285px]">
@@ -154,10 +158,11 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
           </div>
 
           {/* errors will return when field validation fails  */}
-          {errors.password && (
+          {errors.pass && (
             <label className="label">
               <span className="label-text-alt text-red-500">
-                Password is required
+                Password is required,minimum 1 capital letter and have a special
+                character
               </span>
             </label>
           )}
