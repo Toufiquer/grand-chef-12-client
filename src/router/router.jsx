@@ -10,6 +10,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import Instructor from "../pages/Instructor/Instructor";
 import ClassesInstructor from "../pages/ClassesInstructor/ClassesInstructor";
 import Classes from "../pages/Classes/Classes";
+import Payment from "../pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,14 @@ export const router = createBrowserRouter([
     element: (
       <Main>
         <Classes />
+      </Main>
+    ),
+  },
+  {
+    path: "/payment/:email",
+    element: (
+      <Main>
+        <Payment />
       </Main>
     ),
   },
