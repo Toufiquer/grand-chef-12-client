@@ -1,13 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const NavLinks = () => {
+const NavLinks = ({ user }) => {
   const [userRole, setUserRole] = useState({});
   useEffect(() => {
-    fetch("http://localhost:5000/users/toufiquerabc@gmail.com")
-      .then((res) => res.json())
-      .then((data) => setUserRole(data.result));
-  }, []);
+    if (user?.email) {
+      fetch(`http://localhost:5000/users/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => setUserRole(data.result));
+    }
+  }, [user]);
   return (
     <>
       <li>
@@ -18,9 +21,6 @@ const NavLinks = () => {
       </li>
       <li>
         <NavLink to="/classes">Classes</NavLink>
-      </li>
-      <li>
-        <NavLink to="/logIn">Log In</NavLink>
       </li>
       {userRole.role === "admin" && (
         <li>

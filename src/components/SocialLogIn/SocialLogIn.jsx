@@ -48,10 +48,10 @@ const SocialLogIn = () => {
       >
         <BsGoogle /> Google
       </button>
-      <button className="btn btn-outline mt-4 w-full min-w-[350px]">
+      <button disabled className="btn btn-outline mt-4 w-full min-w-[350px]">
         <BsFacebook /> FaceBook
       </button>
-      <button className="btn btn-outline mt-4 w-full min-w-[350px]">
+      <button disabled className="btn btn-outline mt-4 w-full min-w-[350px]">
         <BsGithub /> GitHub
       </button>
     </div>
