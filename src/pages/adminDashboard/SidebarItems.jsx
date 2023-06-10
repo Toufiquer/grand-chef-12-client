@@ -4,19 +4,10 @@ const SidebarItems = () => {
   return (
     <>
       <li>
-        <Link to="/adminDashboard/1">Sidebar Item 1</Link>
+        <Link to="/adminDashboard/adminAddClass">Add a Class</Link>
       </li>
       <li>
-        <Link to="/adminDashboard/2">Sidebar Item 2</Link>
-      </li>
-      <li>
-        <Link to="/adminDashboard/3">Sidebar Item 3</Link>
-      </li>
-      <li>
-        <Link to="/adminDashboard/4">Sidebar Item 4</Link>
-      </li>
-      <li>
-        <Link to="/adminDashboard/5">Sidebar Item 5</Link>
+        <Link to="/adminDashboard/adminMyAllClass">My All Class</Link>
       </li>
     </>
   );

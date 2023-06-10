@@ -1,17 +1,22 @@
 import { useParams } from "react-router-dom";
-
-import ClassesItem from "../ClassesItem/ClassesItem";
+import AdminAddClass from "../../pages/adminDashboard/AdminAddClass";
+import AdminMyAllClass from "../../pages/adminDashboard/AdminMyAllClass";
+import StudentMySelectedClass from "../../pages/StudentDashboard/StudentMySelectedClass";
+import StudentTrash from "../../pages/StudentDashboard/StudentTrash";
+import StudentPaymentHistory from "../../pages/StudentDashboard/StudentPaymentHistory";
 
 const DashBoardContent = () => {
   const { id } = useParams();
   return (
     <>
-      <div className="flex flex-col gap-2">
-        <ClassesItem />
-        <ClassesItem />
-        <ClassesItem />
-        <ClassesItem />
-      </div>
+      {/* For Admin Section */}
+      {id === "adminAddClass" && <AdminAddClass />}
+      {id === "adminMyAllClass" && <AdminMyAllClass />}
+      {/* For Student Section */}
+      {id === "studentMySelectedClass" && <StudentMySelectedClass />}
+      {id === "studentTrash" && <StudentTrash />}
+      {id === "studentPaymentHistory" && <StudentPaymentHistory />}
+      {id === "studentMyEnrolledClasses" && <StudentMySelectedClass />}
     </>
   );
 };
