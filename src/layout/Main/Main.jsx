@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import Footer from "../../components/Footer/Footer";
 import Nav from "../../components/Nav/Nav";
 
 const Main = ({ children }) => {
@@ -7,6 +8,7 @@ const Main = ({ children }) => {
     <>
       <Nav />
       {children}
+      <Footer />
     </>
   );
 };
