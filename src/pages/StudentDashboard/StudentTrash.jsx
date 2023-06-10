@@ -1,9 +1,12 @@
-import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
+import ClassesItem from "../../components/ClassesItem/ClassesItem";
 
 const StudentTrash = () => {
   return (
-    <div>
-      <DisplayCenter>Student Trash</DisplayCenter>
+    <div className="flex flex-col gap-2">
+      <ClassesItem />
+      <ClassesItem />
+      <ClassesItem />
+      <ClassesItem />
     </div>
   );
 };

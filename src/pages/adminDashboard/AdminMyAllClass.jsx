@@ -1,9 +1,14 @@
-import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
+import ClassesItem from "../../components/ClassesItem/ClassesItem";
 
 const AdminMyAllClass = () => {
   return (
     <div>
-      <DisplayCenter>Admin My All Class</DisplayCenter>
+      <div className="flex flex-col gap-2">
+        <ClassesItem />
+        <ClassesItem />
+        <ClassesItem />
+        <ClassesItem />
+      </div>
     </div>
   );
 };
