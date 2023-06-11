@@ -6,7 +6,6 @@ import LogInRegistrationToggle from "./LogInRegistrationToggle";
 import { auth } from "../../firebase";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../Loading/Loading";
-import swal from "sweetalert";
 import useGetJwt from "../../hooks/useGetJwt";
 import { useNavigate } from "react-router-dom";
 const LogInFrom = ({ isLogInPage, logInRegistrationToggle }) => {
