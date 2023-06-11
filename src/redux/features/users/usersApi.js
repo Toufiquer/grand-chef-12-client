@@ -34,6 +34,17 @@ export const usersApi = apiSlice.injectEndpoints({
             Object.assign(draft, newValue);
           })
         );
+        // update getInstructors query
+        const patchResult2 = dispatch(
+          apiSlice.util.updateQueryData(
+            "getInstructors",
+            undefined,
+            (draft) => {
+              const newValue = draft.concat(...arg.data);
+              Object.assign(draft, newValue);
+            }
+          )
+        );
         // optimistic cache update end
         try {
           const query = await queryFulfilled;

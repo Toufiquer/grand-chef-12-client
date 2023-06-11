@@ -3,7 +3,6 @@
 import { Link } from "react-router-dom";
 
 const CardWithImg = ({ data }) => {
-  console.log(data);
   const { _id: id, email, userName, role, photoURL } = data || {};
   return (
     <div>

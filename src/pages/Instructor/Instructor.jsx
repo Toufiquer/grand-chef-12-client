@@ -33,7 +33,11 @@ const Instructor = () => {
       </>
     );
   }
-  return <div className="container mx-auto">{content}</div>;
+  return (
+    <div className="container mx-auto">
+      <div className="my-6 py-6">{content}</div>
+    </div>
+  );
 };
 
 export default Instructor;

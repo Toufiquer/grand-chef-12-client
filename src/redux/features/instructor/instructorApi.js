@@ -11,7 +11,7 @@ export const instructorApi = apiSlice.injectEndpoints({
       query: () => `/instructors`,
     }),
     getInstructor: builder.query({
-      query: (email) => `/instructors/${email}`,
+      query: (id) => `/instructors/${id}`,
     }),
     updateInstructor: builder.mutation({
       query: ({ id, data }) => ({
