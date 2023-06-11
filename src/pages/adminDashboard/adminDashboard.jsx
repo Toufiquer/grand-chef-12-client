@@ -1,7 +1,7 @@
 import { FiSettings } from "react-icons/fi";
-import SidebarItems from "./SidebarItems";
 import { Outlet } from "react-router-dom";
-const adminDashboard = () => {
+import AdminSidebarItems from "./AdminSidebarItems";
+const AdminDashboard = () => {
   return (
     <>
       <div className="container mx-auto">
@@ -25,7 +25,7 @@ const adminDashboard = () => {
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
               {/* Sidebar content here */}
-              <SidebarItems />
+              <AdminSidebarItems />
             </ul>
           </div>
         </div>
@@ -34,4 +34,4 @@ const adminDashboard = () => {
   );
 };
 
-export default adminDashboard;
+export default AdminDashboard;

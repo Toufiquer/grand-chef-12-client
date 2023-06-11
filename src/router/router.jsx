@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Main from "../layout/Main/Main";
 import LogIn from "../pages/LogIn/LogIn";
-import AdminDashboard from "../pages/adminDashboard/adminDashboard";
+import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
 import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
 import NotFound from "../pages/NotFound/NotFound";
@@ -11,11 +11,11 @@ import ClassesInstructor from "../pages/ClassesInstructor/ClassesInstructor";
 import Classes from "../pages/Classes/Classes";
 import Payment from "../pages/Payment/Payment";
 import InstructorDashboard from "../pages/InstructorDashboard/InstructorDashboard";
-import AdminAddClass from "../pages/adminDashboard/AdminAddClass";
-import AdminMyAllClass from "../pages/adminDashboard/AdminMyAllClass";
-import AdminFeedback from "../pages/adminDashboard/AdminFeedback";
-import AdminTotalEnrollmentStudent from "../pages/adminDashboard/AdminTotalEnrollmentStudent";
-import AdminTotalEnrollmentInstructor from "../pages/adminDashboard/AdminTotalEnrollmentInstructor";
+import AdminAddClass from "../pages/AdminDashboard/AdminAddClass";
+import AdminMyAllClass from "../pages/AdminDashboard/AdminMyAllClass";
+import AdminFeedback from "../pages/AdminDashboard/AdminFeedback";
+import AdminTotalEnrollmentStudent from "../pages/AdminDashboard/AdminTotalEnrollmentStudent";
+import AdminTotalEnrollmentInstructor from "../pages/AdminDashboard/AdminTotalEnrollmentInstructor";
 import StudentMySelectedClass from "../pages/StudentDashboard/StudentMySelectedClass";
 import StudentTrash from "../pages/StudentDashboard/StudentTrash";
 import StudentPaymentHistory from "../pages/StudentDashboard/StudentPaymentHistory";
@@ -23,6 +23,7 @@ import StudentMyEnrolledClasses from "../pages/StudentDashboard/StudentMyEnrolle
 import InstructorAddClass from "../pages/InstructorDashboard/InstructorAddClass";
 import InstructorMyAllClass from "../pages/instructorDashboard/InstructorMyAllClass";
 import InstructorTotalEnrollmentStudent from "../pages/InstructorDashboard/InstructorTotalEnrollmentStudent";
+import AdminManageUsers from "../pages/AdminDashboard/AdminManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path: "adminAddClass",
         element: <AdminAddClass />,
+      },
+      {
+        path: "adminManageUsers",
+        element: <AdminManageUsers />,
       },
       {
         path: "adminMyAllClass",

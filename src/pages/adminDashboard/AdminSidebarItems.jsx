@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 
-const SidebarItems = () => {
+const AdminSidebarItems = () => {
   return (
     <>
+      <li>
+        <Link to="/adminDashboard/adminManageUsers">Manage Users</Link>
+      </li>
       <li>
         <Link to="/adminDashboard/adminAddClass">Add a Class</Link>
       </li>
@@ -26,4 +29,4 @@ const SidebarItems = () => {
   );
 };
 
-export default SidebarItems;
+export default AdminSidebarItems;
