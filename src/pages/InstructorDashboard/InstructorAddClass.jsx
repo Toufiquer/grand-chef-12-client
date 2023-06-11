@@ -1,15 +1,42 @@
 import { useForm } from "react-hook-form";
 import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
 import { BsStar } from "react-icons/bs";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
+import { useAddClassMutation } from "../../redux/features/classes/classesApi";
 
+import swal from "sweetalert";
+import { useEffect } from "react";
 const InstructorAddClass = () => {
+  const [user, ,] = useAuthState(auth);
+  const [addVideo, { isSuccess, isLoading, isError, error }] =
+    useAddClassMutation();
+
+  useEffect(() => {
+    isSuccess &&
+      swal({
+        title: "Class added successfully",
+        text: error,
+        icon: "success",
+        buttons: true,
+        dangerMode: false,
+      });
+    isError &&
+      swal({
+        title: "Ops! something went wrong",
+        text: error,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      });
+  }, [isError, isSuccess, error]);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    addVideo(data);
   };
   return (
     <div>
@@ -33,7 +60,7 @@ const InstructorAddClass = () => {
                 </label>
                 <input
                   placeholder="Class Name"
-                  {...register("name", {
+                  {...register("className", {
                     required: true,
                   })}
                   className="input input-bordered w-full"
@@ -79,9 +106,10 @@ const InstructorAddClass = () => {
                 <input
                   placeholder="Instructor name"
                   readOnly
-                  {...register("inName", {
+                  {...register("instructorName", {
                     required: true,
                   })}
+                  value={user?.displayName || ""}
                   className="input input-bordered w-full"
                 />
               </div>
@@ -95,9 +123,8 @@ const InstructorAddClass = () => {
                   readOnly
                   {...register("email", {
                     required: true,
-                    pattern:
-                      /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/i,
                   })}
+                  value={user?.email || ""}
                   className="input input-bordered w-full"
                 />
 
@@ -135,6 +162,7 @@ const InstructorAddClass = () => {
                 />
               </div>
               <input
+                disabled={isLoading}
                 type="submit"
                 className="btn btn-outline mt-4 w-full"
                 value="Add Class"

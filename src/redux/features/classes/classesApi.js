@@ -108,7 +108,7 @@ export const classesApi = apiSlice.injectEndpoints({
         try {
           const query = await queryFulfilled;
           // pessimistic cache update start
-          if (query?.data?.id) {
+          if (query?.data) {
             dispatch(
               apiSlice.util.updateQueryData(
                 "getClasses",
