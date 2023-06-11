@@ -16,7 +16,7 @@ export const usersApi = apiSlice.injectEndpoints({
     updateUser: builder.mutation({
       query: ({ id, data }) => ({
         url: `/users/${id}`,
-        method: "PATCH",
+        method: "PUT",
         body: data,
       }),
 
@@ -25,7 +25,7 @@ export const usersApi = apiSlice.injectEndpoints({
         const patchResult1 = dispatch(
           apiSlice.util.updateQueryData("getUsers", undefined, (draft) => {
             const newValue = draft.map((curr) => {
-              if (parseInt(curr.id) === parseInt(arg.id)) {
+              if (curr._id === arg.id) {
                 return { ...curr, ...arg.data };
               } else {
                 return curr;

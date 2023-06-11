@@ -24,29 +24,24 @@ const AdminManageUsers = () => {
   if (!isLoading && !isError && data?.length === 0) {
     content = <h2>Ops! Nothing was Found.</h2>;
   }
-  console.log("page content", data);
   let findCount = 0;
   if (!isLoading && !isError && data?.length > 0) {
-    content = (
-      <div className="flex flex-col gap-2">
-        {
-          (findCount = data
-            .filter((curr) => {
-              if (
-                filterUsers === "student" ||
-                filterUsers === "admin" ||
-                filterUsers === "instructor"
-              ) {
-                console.log(curr);
-                return curr.role === filterUsers;
-              } else {
-                return true;
-              }
-            })
-            .map((curr) => <AdminUserCard key={curr._id} user={curr} />))
+    findCount = data
+      .filter((curr) => {
+        if (
+          filterUsers === "student" ||
+          filterUsers === "admin" ||
+          filterUsers === "instructor"
+        ) {
+          console.log(curr);
+          return curr.role === filterUsers;
+        } else {
+          return true;
         }
-      </div>
-    );
+      })
+      .map((curr) => <AdminUserCard key={curr._id} user={curr} />);
+
+    content = <div className="flex flex-col gap-2">{findCount}</div>;
   }
   return (
     <div className="relative">

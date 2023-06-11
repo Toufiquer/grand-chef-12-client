@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useDeleteUserMutation } from "../../redux/features/users/usersApi";
+import {
+  useDeleteUserMutation,
+  useUpdateUserMutation,
+} from "../../redux/features/users/usersApi";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
 import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
@@ -13,6 +16,15 @@ const AdminUserCard = ({ user }) => {
   const [filterUsers, setFilter] = useState("student");
   const [deleteUser, { isSuccess, isError, error, isLoading }] =
     useDeleteUserMutation();
+  const [
+    updateVideo,
+    {
+      isSuccess: isSuccess2,
+      isLoading: isLoading2,
+      isError: isError2,
+      error: error2,
+    },
+  ] = useUpdateUserMutation();
   useEffect(() => {
     isSuccess &&
       swal({
@@ -31,11 +43,31 @@ const AdminUserCard = ({ user }) => {
         dangerMode: true,
       });
   }, [isSuccess, isError, error]);
+  useEffect(() => {
+    isSuccess2 &&
+      swal({
+        title: "User is successfully Updated",
+        text: error2,
+        icon: "success",
+        buttons: true,
+        dangerMode: false,
+      });
+    isError2 &&
+      swal({
+        title: "Error Occurred",
+        text: error2,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      });
+  }, [isSuccess2, isError2, error2]);
   const deleteFnc = () => {
     deleteUser(_id);
   };
   const handleUserMutation = () => {
     console.log(filterUsers, _id);
+    const data = { ...user, role: filterUsers };
+    updateVideo({ id: _id, data });
   };
   return (
     <div className="border border-solid border-current rounded-lg px-4 py-2 flex items-center justify-between">
