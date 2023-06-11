@@ -15,7 +15,8 @@ const SwipeSlider = () => {
         }}
         breakpoints={{
           400: { slidesPerView: 1, spaceBetween: 150 },
-          768: { slidesPerView: 2, spaceBetween: 50 },
+          969: { slidesPerView: 2, spaceBetween: 50 },
+          1400: { slidesPerView: 3, spaceBetween: 50 },
         }}
         freeMode
         centeredSlides
