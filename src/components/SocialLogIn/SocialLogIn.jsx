@@ -21,20 +21,6 @@ const SocialLogIn = () => {
     }
   }, [isLoading, navigate]);
   if (loading && !error) {
-    // useEffect(() => {
-    //   if (user) {
-    //     fetch("http://localhost:5000/jwt", {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify({ email: user.user.email }),
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         localStorage.setItem("Token", JSON.stringify(data.result.token));
-    //         swal("Good job!", "Logged In", "successful");
-    //       });
-    //   }
-    // }, [user]);
     return <Loading />;
   }
   return (

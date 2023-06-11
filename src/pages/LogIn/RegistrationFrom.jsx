@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -68,12 +69,15 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
             gender: data.gender,
             phNumber: data.phNumber,
             address: data.address,
+            displayName: data.name,
+            photoURL: data.photoUrl,
+            email: data.email,
           };
           await updateProfile({
             ...userData,
-            displayName: data.name,
-            photoURL: data.photoUrl,
           });
+
+          useGetJwt(userData, "Logged In Successful");
         }
       };
       runFn();

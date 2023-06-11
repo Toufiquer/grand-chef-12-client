@@ -5,6 +5,7 @@ import SocialLogIn from "../../components/SocialLogIn/SocialLogIn";
 import LogInFrom from "./LogInFrom";
 import RegistrationFrom from "./RegistrationFrom";
 const LogIn = () => {
+  // LogIn or Registration  from toggle
   const [isLogInPage, setIsLogInPage] = useState(true);
   const logInRegistrationToggle = () => {
     setIsLogInPage((pre) => !pre);
