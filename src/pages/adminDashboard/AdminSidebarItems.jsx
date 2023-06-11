@@ -7,10 +7,25 @@ const AdminSidebarItems = () => {
         <Link to="/adminDashboard/adminManageUsers">Manage Users</Link>
       </li>
       <li>
-        <Link to="/adminDashboard/adminAddClass">Add a Class</Link>
+        <Link to="/adminDashboard/adminInstructorAllClasses">
+          Instructor Classes
+        </Link>
       </li>
       <li>
-        <Link to="/adminDashboard/adminMyAllClass">My All Class</Link>
+        <Link to="/adminDashboard/adminAddClass">
+          Add a Class
+          <sub>
+            <small>For Instructor</small>
+          </sub>
+        </Link>
+      </li>
+      <li>
+        <Link to="/adminDashboard/adminMyAllClass">
+          My All Class
+          <sub>
+            <small>For Instructor</small>
+          </sub>
+        </Link>
       </li>
       <li>
         <Link to="/adminDashboard/adminTotalEnrolledStudent">
