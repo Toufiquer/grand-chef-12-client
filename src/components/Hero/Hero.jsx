@@ -1,6 +1,5 @@
-
-
 /* eslint-disable react/prop-types */
+import { Typewriter } from "react-simple-typewriter";
 const Hero = () => {
   return (
     <div>
@@ -9,6 +8,18 @@ const Hero = () => {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <span className="text-6xl font-thin  text-center mb-2">
+              {/* Style will be inherited from the parent element */}
+              <Typewriter
+                words={["Eat", "Sleep", "Code", "Repeat!"]}
+                loop={Infinity}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
             <p className="mb-5">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
