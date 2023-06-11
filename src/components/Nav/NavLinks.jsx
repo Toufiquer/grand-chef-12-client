@@ -22,6 +22,17 @@ const NavLinks = ({ user }) => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
+      {/* Not conditional Route Delete on production */}
+      <li>
+        <NavLink to="/adminDashboard">Admin Dashboard </NavLink>
+      </li>
+      <li>
+        <NavLink to="/studentDashboard">Student Dashboard </NavLink>
+      </li>
+      <li>
+        <NavLink to="/instructorDashboard">Instructor Dashboard </NavLink>
+      </li>
+      {/* Conditional Route */}
       {userRole.role === "admin" && (
         <li>
           <NavLink to="/adminDashboard">Dashboard </NavLink>
