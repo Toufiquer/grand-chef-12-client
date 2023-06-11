@@ -4,7 +4,6 @@ import Main from "../layout/Main/Main";
 import LogIn from "../pages/LogIn/LogIn";
 import AdminDashboard from "../pages/adminDashboard/adminDashboard";
 import DisplayCenter from "../components/DisplayCenter/DisplayCenter";
-import DashBoardContent from "../components/DashBoardContent/DashBoardContent";
 import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
 import NotFound from "../pages/NotFound/NotFound";
 import Instructor from "../pages/Instructor/Instructor";
@@ -21,6 +20,9 @@ import StudentMySelectedClass from "../pages/StudentDashboard/StudentMySelectedC
 import StudentTrash from "../pages/StudentDashboard/StudentTrash";
 import StudentPaymentHistory from "../pages/StudentDashboard/StudentPaymentHistory";
 import StudentMyEnrolledClasses from "../pages/StudentDashboard/StudentMyEnrolledClasses";
+import InstructorAddClass from "../pages/InstructorDashboard/InstructorAddClass";
+import InstructorMyAllClass from "../pages/instructorDashboard/InstructorMyAllClass";
+import InstructorTotalEnrollmentStudent from "../pages/InstructorDashboard/InstructorTotalEnrollmentStudent";
 
 export const router = createBrowserRouter([
   {
@@ -148,8 +150,20 @@ export const router = createBrowserRouter([
         element: <DisplayCenter>Please Selected First</DisplayCenter>,
       },
       {
-        path: ":id",
-        element: <DashBoardContent />, // it's a global component all dashboard can use it.
+        path: "instructorAddClass",
+        element: <InstructorAddClass />,
+      },
+      {
+        path: "instructorMyAllClass",
+        element: <InstructorMyAllClass />,
+      },
+      {
+        path: "instructorTotalEnrolledStudent",
+        element: <InstructorTotalEnrollmentStudent />,
+      },
+      {
+        path: "instructorFeedBack",
+        element: <AdminFeedback />,
       },
     ],
   },
