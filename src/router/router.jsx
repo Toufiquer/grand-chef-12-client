@@ -17,6 +17,10 @@ import AdminMyAllClass from "../pages/adminDashboard/AdminMyAllClass";
 import AdminFeedback from "../pages/adminDashboard/AdminFeedback";
 import AdminTotalEnrollmentStudent from "../pages/adminDashboard/AdminTotalEnrollmentStudent";
 import AdminTotalEnrollmentInstructor from "../pages/adminDashboard/AdminTotalEnrollmentInstructor";
+import StudentMySelectedClass from "../pages/StudentDashboard/StudentMySelectedClass";
+import StudentTrash from "../pages/StudentDashboard/StudentTrash";
+import StudentPaymentHistory from "../pages/StudentDashboard/StudentPaymentHistory";
+import StudentMyEnrolledClasses from "../pages/StudentDashboard/StudentMyEnrolledClasses";
 
 export const router = createBrowserRouter([
   {
@@ -114,8 +118,20 @@ export const router = createBrowserRouter([
         element: <DisplayCenter>Please Selected First</DisplayCenter>,
       },
       {
-        path: ":id",
-        element: <DashBoardContent />,
+        path: "studentMySelectedClass",
+        element: <StudentMySelectedClass />,
+      },
+      {
+        path: "studentTrash",
+        element: <StudentTrash />,
+      },
+      {
+        path: "studentPaymentHistory",
+        element: <StudentPaymentHistory />,
+      },
+      {
+        path: "studentMyEnrolledClasses",
+        element: <StudentMyEnrolledClasses />,
       },
     ],
   },
