@@ -1,9 +1,12 @@
-import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
+import InstructorStudentItem from "./InstructorStudentItem";
 
 const InstructorTotalEnrollmentStudent = () => {
   return (
-    <div>
-      <DisplayCenter>Total Enrollment</DisplayCenter>
+    <div className="flex gap-2 flex-col">
+      <InstructorStudentItem />
+      <InstructorStudentItem />
+      <InstructorStudentItem />
+      <InstructorStudentItem />
     </div>
   );
 };

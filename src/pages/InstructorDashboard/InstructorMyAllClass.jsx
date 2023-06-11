@@ -1,13 +1,13 @@
-import ClassesItem from "../../components/ClassesItem/ClassesItem";
+import InstructorClassItems from "./InstructorClassItems";
 
 const InstructorMyAllClass = () => {
   return (
     <div>
       <div className="flex flex-col gap-2">
-        <ClassesItem />
-        <ClassesItem />
-        <ClassesItem />
-        <ClassesItem />
+        <InstructorClassItems />
+        <InstructorClassItems />
+        <InstructorClassItems />
+        <InstructorClassItems />
       </div>
     </div>
   );

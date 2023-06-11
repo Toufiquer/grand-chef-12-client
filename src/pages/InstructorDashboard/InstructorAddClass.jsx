@@ -15,26 +15,28 @@ const InstructorAddClass = () => {
     <div>
       <DisplayCenter>
         <>
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full">
             <h2 className="text-center my-2 text-4xl font-thin">
               {" "}
               Instructor Add Class
+              <br />
+              <small className="text-sm text-center">For Students</small>
             </h2>
             <div className="divider">
               <BsStar />
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {/*  Name */}
-              <div className="form-control w-fullw-full">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+              {/* Class Name */}
+              <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text">Your Name</span>
+                  <span className="label-text">Class Name</span>
                 </label>
                 <input
                   placeholder="Class Name"
                   {...register("name", {
                     required: true,
                   })}
-                  className="input input-bordered w-fullw-full"
+                  className="input input-bordered w-full"
                 />
 
                 {/* errors will return when field validation fails  */}
@@ -46,57 +48,18 @@ const InstructorAddClass = () => {
                   </label>
                 )}
               </div>
-              {/* Email */}
-              <div className="form-control w-fullw-full">
-                <label className="label">
-                  <span className="label-text">What is Your Email?</span>
-                </label>
-                <input
-                  placeholder="Your Email"
-                  readOnly
-                  {...register("email", {
-                    required: true,
-                    pattern:
-                      /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/i,
-                  })}
-                  className="input input-bordered w-fullw-full"
-                />
-
-                {/* errors will return when field validation fails  */}
-                {errors.email && (
-                  <label className="label">
-                    <span className="label-text-alt text-red-500">
-                      Email is required
-                    </span>
-                  </label>
-                )}
-              </div>{" "}
-              {/* Instructor name */}
-              <div className="form-control w-fullw-full">
-                <label className="label">
-                  <span className="label-text">What is Your Email?</span>
-                </label>
-                <input
-                  placeholder="Your name"
-                  readOnly
-                  {...register("inName", {
-                    required: true,
-                  })}
-                  className="input input-bordered w-fullw-full"
-                />
-              </div>
               {/* Photo URL */}
-              <div className="form-control w-fullw-full">
+              <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text">Your Photo URL</span>
+                  <span className="label-text">Class Photo URL</span>
                 </label>
                 <input
                   type="url"
-                  placeholder="Your Photo URL"
+                  placeholder="Class Photo URL"
                   {...register("photoUrl", {
                     required: true,
                   })}
-                  className="input input-bordered w-fullw-full"
+                  className="input input-bordered w-full"
                 />
 
                 {/* errors will return when field validation fails  */}
@@ -108,54 +71,67 @@ const InstructorAddClass = () => {
                   </label>
                 )}
               </div>
-              {/* Gender */}
-              <div className="form-control w-fullw-full">
+              {/* Instructor name */}
+              <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text">Gender</span>
+                  <span className="label-text">Instructor name</span>
                 </label>
-                <select
-                  {...register("gender")}
-                  className="input input-bordered w-fullw-full  pr-2"
-                >
-                  <option value="female">Female</option>
-                  <option value="male">Male</option>
-                  <option value="other">Other</option>
-                </select>
+                <input
+                  placeholder="Instructor name"
+                  readOnly
+                  {...register("inName", {
+                    required: true,
+                  })}
+                  className="input input-bordered w-full"
+                />
               </div>
-              {/* Phone Number */}
-              <div className="form-control w-fullw-full">
+              {/* Instructor Email */}
+              <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text">Phone Number</span>
+                  <span className="label-text">Instructor Email</span>
+                </label>
+                <input
+                  placeholder="Instructor Email"
+                  readOnly
+                  {...register("email", {
+                    required: true,
+                    pattern:
+                      /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/i,
+                  })}
+                  className="input input-bordered w-full"
+                />
+
+                {/* errors will return when field validation fails  */}
+                {errors.email && (
+                  <label className="label">
+                    <span className="label-text-alt text-red-500">
+                      Email is required
+                    </span>
+                  </label>
+                )}
+              </div>
+              {/* Available Seats  */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Available Seats</span>
                 </label>
                 <input
                   type="number"
-                  placeholder="Your Phone Number"
-                  {...register("phNumber")}
-                  className="input input-bordered w-fullw-full"
+                  placeholder="Available Seats"
+                  {...register("seats")}
+                  className="input input-bordered w-full"
                 />
-              </div>{" "}
+              </div>
               {/* Price*/}
-              <div className="form-control w-fullw-full">
+              <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Price</span>
                 </label>
                 <input
                   type="number"
-                  placeholder="Your Phone Number"
+                  placeholder="Class Price"
                   {...register("price")}
-                  className="input input-bordered w-fullw-full"
-                />
-              </div>
-              {/* Address */}
-              <div className="form-control w-fullw-full">
-                <label className="label">
-                  <span className="label-text">Address</span>
-                </label>
-                <textarea
-                  type="textArea"
-                  placeholder="Your Address"
-                  {...register("address")}
-                  className="input input-bordered w-fullw-full"
+                  className="input input-bordered w-full"
                 />
               </div>
               <input

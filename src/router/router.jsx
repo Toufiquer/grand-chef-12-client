@@ -25,6 +25,7 @@ import InstructorMyAllClass from "../pages/instructorDashboard/InstructorMyAllCl
 import InstructorTotalEnrollmentStudent from "../pages/InstructorDashboard/InstructorTotalEnrollmentStudent";
 import AdminManageUsers from "../pages/AdminDashboard/AdminManageUsers";
 import AdminInstructorAllClass from "../pages/AdminDashboard/AdminInstructorAllClass";
+import InstructorMyAllFeedback from "../pages/InstructorDashboard/InstructorMyAllFeedback";
 
 export const router = createBrowserRouter([
   {
@@ -173,7 +174,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "instructorFeedBack",
-        element: <AdminFeedback />,
+        element: <InstructorMyAllFeedback />,
       },
     ],
   },
