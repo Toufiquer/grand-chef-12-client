@@ -1,8 +1,17 @@
 /* eslint-disable react/prop-types */
 import { Typewriter } from "react-simple-typewriter";
+import { motion, useSpring } from "framer-motion";
+
 const Hero = () => {
+  const x = useSpring(0);
+
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      style={{ x }}
+    >
+      {/* <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} /> */}
       <div className="hero min-h-screen TR-hero">
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -29,7 +38,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
