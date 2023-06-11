@@ -4,7 +4,7 @@ import NavLinks from "./NavLinks";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "../../pages/Loading/Loading";
-
+import { Link } from "react-router-dom";
 const Nav = () => {
   const [user, loading, err] = useAuthState(auth);
   if (loading && !err) {
@@ -38,7 +38,9 @@ const Nav = () => {
               <NavLinks />
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
+            GS Tour
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
