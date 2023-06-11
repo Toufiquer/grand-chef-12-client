@@ -2,7 +2,14 @@
 import { useState } from "react";
 import DisplayCenter from "../DisplayCenter/DisplayCenter";
 
-const ConfirmBtn = ({ name, fnc, isLoading = false, otherData = false }) => {
+const ConfirmBtn = ({
+  name,
+  fnc,
+  isLoading = false,
+  otherData = false,
+  otherData2 = false,
+  title = "Are You Sure?",
+}) => {
   const [delToggle, setDelToggle] = useState(false);
   const modalToggle = () => {
     setDelToggle((pre) => !pre);
@@ -25,8 +32,9 @@ const ConfirmBtn = ({ name, fnc, isLoading = false, otherData = false }) => {
           <DisplayCenter>
             <div className="card w-96 bg-base-100 shadow-xl">
               <div className="card-body">
-                <h2 className="card-title">Are You Sure?</h2>
+                <h2 className="card-title">{title}</h2>
                 {otherData && otherData}
+                {otherData2 && otherData2}
                 <div className="card-actions justify-end">
                   <button onClick={modalToggle} className="btn btn-primary">
                     Cancel

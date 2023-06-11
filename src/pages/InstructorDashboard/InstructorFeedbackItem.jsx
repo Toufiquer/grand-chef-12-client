@@ -25,7 +25,7 @@ const InstructorFeedbackItem = () => {
               </h2>
             </div>
             <div className="flex gap-4">
-              <div className="btn btn-accent">Approve</div>
+              <div className="btn btn-accent">Appeal</div>
             </div>
           </div>
         </div>

@@ -45,6 +45,7 @@ const AdminManageUsers = () => {
   }
   return (
     <div className="relative">
+      {/* Filter Section */}
       <div className="mb-2 sticky top-0 backdrop-blur-lg">
         <div className="border border-solid border-current rounded-lg px-4 py-2 flex items-center justify-between">
           <div className="flex flex-col gap-2">
