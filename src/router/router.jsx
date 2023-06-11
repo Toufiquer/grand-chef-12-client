@@ -26,6 +26,7 @@ import InstructorTotalEnrollmentStudent from "../pages/InstructorDashboard/Instr
 import AdminManageUsers from "../pages/AdminDashboard/AdminManageUsers";
 import AdminInstructorAllClass from "../pages/AdminDashboard/AdminInstructorAllClass";
 import InstructorMyAllFeedback from "../pages/InstructorDashboard/InstructorMyAllFeedback";
+import RequireAuth from "../components/RequireAuth/RequireAuth";
 
 export const router = createBrowserRouter([
   {
@@ -80,7 +81,9 @@ export const router = createBrowserRouter([
     path: "/adminDashboard",
     element: (
       <Main>
-        <AdminDashboard />
+        <RequireAuth requireRole="admin">
+          <AdminDashboard />
+        </RequireAuth>
       </Main>
     ),
     children: [
@@ -122,7 +125,9 @@ export const router = createBrowserRouter([
     path: "/studentDashboard",
     element: (
       <Main>
-        <StudentDashboard />
+        <RequireAuth requireRole="student">
+          <StudentDashboard />
+        </RequireAuth>
       </Main>
     ),
     children: [
@@ -152,7 +157,9 @@ export const router = createBrowserRouter([
     path: "/instructorDashboard",
     element: (
       <Main>
-        <InstructorDashboard />
+        <RequireAuth requireRole="instructor">
+          <InstructorDashboard />
+        </RequireAuth>
       </Main>
     ),
     children: [
