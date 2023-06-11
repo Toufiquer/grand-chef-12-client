@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
 import { BsStar } from "react-icons/bs";
 
-const AdminAddClass = () => {
+const InstructorAddClass = () => {
   const {
     register,
     handleSubmit,
@@ -18,7 +18,7 @@ const AdminAddClass = () => {
           <div className="flex flex-col">
             <h2 className="text-center my-2 text-4xl font-thin">
               {" "}
-              Admin Add Class
+              Instructor Add Class
             </h2>
             <div className="divider">
               <BsStar />
@@ -171,4 +171,4 @@ const AdminAddClass = () => {
   );
 };
 
-export default AdminAddClass;
+export default InstructorAddClass;

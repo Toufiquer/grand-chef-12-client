@@ -11,6 +11,12 @@ import Instructor from "../pages/Instructor/Instructor";
 import ClassesInstructor from "../pages/ClassesInstructor/ClassesInstructor";
 import Classes from "../pages/Classes/Classes";
 import Payment from "../pages/Payment/Payment";
+import InstructorDashboard from "../pages/InstructorDashboard/InstructorDashboard";
+import AdminAddClass from "../pages/adminDashboard/AdminAddClass";
+import AdminMyAllClass from "../pages/adminDashboard/AdminMyAllClass";
+import AdminFeedback from "../pages/adminDashboard/AdminFeedback";
+import AdminTotalEnrollmentStudent from "../pages/adminDashboard/AdminTotalEnrollmentStudent";
+import AdminTotalEnrollmentInstructor from "../pages/adminDashboard/AdminTotalEnrollmentInstructor";
 
 export const router = createBrowserRouter([
   {
@@ -22,18 +28,18 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/instructor",
-    element: (
-      <Main>
-        <Instructor />
-      </Main>
-    ),
-  },
-  {
     path: "/logIn",
     element: (
       <Main>
         <LogIn />
+      </Main>
+    ),
+  },
+  {
+    path: "/instructor",
+    element: (
+      <Main>
+        <Instructor />
       </Main>
     ),
   },
@@ -74,8 +80,24 @@ export const router = createBrowserRouter([
         element: <DisplayCenter>Please Selected First</DisplayCenter>,
       },
       {
-        path: ":id",
-        element: <DashBoardContent />,
+        path: "adminAddClass",
+        element: <AdminAddClass />,
+      },
+      {
+        path: "adminMyAllClass",
+        element: <AdminMyAllClass />,
+      },
+      {
+        path: "adminTotalEnrolledStudent",
+        element: <AdminTotalEnrollmentStudent />,
+      },
+      {
+        path: "adminTotalEnrolledInstructor",
+        element: <AdminTotalEnrollmentInstructor />,
+      },
+      {
+        path: "adminFeedBack",
+        element: <AdminFeedback />,
       },
     ],
   },
@@ -94,6 +116,24 @@ export const router = createBrowserRouter([
       {
         path: ":id",
         element: <DashBoardContent />,
+      },
+    ],
+  },
+  {
+    path: "/instructorDashboard",
+    element: (
+      <Main>
+        <InstructorDashboard />
+      </Main>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DisplayCenter>Please Selected First</DisplayCenter>,
+      },
+      {
+        path: ":id",
+        element: <DashBoardContent />, // it's a global component all dashboard can use it.
       },
     ],
   },

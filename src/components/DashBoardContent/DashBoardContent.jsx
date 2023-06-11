@@ -17,6 +17,7 @@ const DashBoardContent = () => {
       {id === "studentTrash" && <StudentTrash />}
       {id === "studentPaymentHistory" && <StudentPaymentHistory />}
       {id === "studentMyEnrolledClasses" && <StudentMySelectedClass />}
+      {id === "" && <StudentMySelectedClass />}
     </>
   );
 };

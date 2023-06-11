@@ -31,6 +31,11 @@ const NavLinks = ({ user }) => {
         <li>
           <NavLink to="/studentDashboard">Dashboard </NavLink>
         </li>
+      )}{" "}
+      {userRole.role === "instructor" && (
+        <li>
+          <NavLink to="/instructorDashboard">Dashboard </NavLink>
+        </li>
       )}
     </>
   );
