@@ -53,7 +53,7 @@ export const usersApi = apiSlice.injectEndpoints({
         const patchResult1 = dispatch(
           apiSlice.util.updateQueryData("getUsers", undefined, (draft) => {
             const index = draft.findIndex(
-              (i) => parseInt(i.id) === parseInt(arg)
+              (i) => parseInt(i._id) === parseInt(arg)
             );
             draft.splice(index, 1);
           })

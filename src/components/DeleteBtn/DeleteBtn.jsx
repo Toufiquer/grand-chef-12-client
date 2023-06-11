@@ -2,7 +2,7 @@
 import { useState } from "react";
 import DisplayCenter from "../DisplayCenter/DisplayCenter";
 
-const DeleteBtn = ({ fnc }) => {
+const DeleteBtn = ({ fnc, isLoading = false }) => {
   const [delToggle, setDelToggle] = useState(false);
   const modalToggle = () => {
     setDelToggle((pre) => !pre);
@@ -13,7 +13,11 @@ const DeleteBtn = ({ fnc }) => {
   };
   return (
     <>
-      <button onClick={modalToggle} className="btn btn-secondary">
+      <button
+        disabled={isLoading}
+        onClick={modalToggle}
+        className="btn btn-secondary"
+      >
         Delete
       </button>
       {delToggle && (
@@ -22,12 +26,16 @@ const DeleteBtn = ({ fnc }) => {
             <div className="card w-96 bg-base-100 shadow-xl">
               <div className="card-body">
                 <h2 className="card-title">Are You Sure?</h2>
-                <p>You can find this data in trash</p>
+                <p>You can't find this data in trash</p>
                 <div className="card-actions justify-end">
                   <button onClick={modalToggle} className="btn btn-primary">
                     Cancel
                   </button>
-                  <button onClick={handleConfirm} className="btn btn-secondary">
+                  <button
+                    disabled={isLoading}
+                    onClick={handleConfirm}
+                    className="btn btn-secondary"
+                  >
                     Confirm
                   </button>
                 </div>
