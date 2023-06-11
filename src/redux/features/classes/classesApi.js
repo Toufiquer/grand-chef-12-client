@@ -2,18 +2,18 @@
 
 import { apiSlice } from "../api/apiSlice";
 
-export const videosApi = apiSlice.injectEndpoints({
+export const classesApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // endpoints here
-    getVideos: builder.query({
-      query: () => `/videos`,
+    getClasses: builder.query({
+      query: () => `/classes`,
     }),
-    getVideo: builder.query({
-      query: (id) => `/videos/${id}`,
+    getClass: builder.query({
+      query: (id) => `/classes/${id}`,
     }),
-    updateVideo: builder.mutation({
+    updateClass: builder.mutation({
       query: ({ id, data }) => ({
-        url: `/videos/${id}`,
+        url: `/classes/${id}`,
         method: "PATCH",
         body: data,
       }),
@@ -21,7 +21,7 @@ export const videosApi = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         // optimistic cache update start
         const patchResult1 = dispatch(
-          apiSlice.util.updateQueryData("getVideos", undefined, (draft) => {
+          apiSlice.util.updateQueryData("getClasses", undefined, (draft) => {
             const newValue = draft.map((curr) => {
               if (parseInt(curr.id) === parseInt(arg.id)) {
                 return { ...curr, ...arg.data };
@@ -40,9 +40,9 @@ export const videosApi = apiSlice.injectEndpoints({
         }
       },
     }),
-    editVideo: builder.mutation({
+    editClass: builder.mutation({
       query: ({ id, data }) => ({
-        url: `/videos/${id}`,
+        url: `/classes/${id}`,
         method: "PATCH",
         body: { ...data },
       }),
@@ -53,32 +53,36 @@ export const videosApi = apiSlice.injectEndpoints({
           // pessimistic cache update start
           if (query?.data?.id) {
             dispatch(
-              apiSlice.util.updateQueryData("getVideos", undefined, (draft) => {
-                const newValue = draft.map((curr) => {
-                  if (+curr.id === arg.id) {
-                    return { ...query?.data };
-                  } else {
-                    return curr;
-                  }
-                });
-                Object.assign(draft, newValue);
-              })
+              apiSlice.util.updateQueryData(
+                "getClasses",
+                undefined,
+                (draft) => {
+                  const newValue = draft.map((curr) => {
+                    if (+curr.id === arg.id) {
+                      return { ...query?.data };
+                    } else {
+                      return curr;
+                    }
+                  });
+                  Object.assign(draft, newValue);
+                }
+              )
             );
           }
           // pessimistic cache update end
         } catch {}
       },
     }),
-    deleteVideo: builder.mutation({
+    deleteClass: builder.mutation({
       query: (id) => ({
-        url: `/videos/${id}`,
+        url: `/classes/${id}`,
         method: "DELETE",
       }),
 
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         // optimistic cache update start
         const patchResult1 = dispatch(
-          apiSlice.util.updateQueryData("getVideos", undefined, (draft) => {
+          apiSlice.util.updateQueryData("getClasses", undefined, (draft) => {
             const index = draft.findIndex(
               (i) => parseInt(i.id) === parseInt(arg)
             );
@@ -93,9 +97,9 @@ export const videosApi = apiSlice.injectEndpoints({
         }
       },
     }),
-    addVideo: builder.mutation({
+    addClass: builder.mutation({
       query: (data) => ({
-        url: `/videos`,
+        url: `/classes`,
         method: "POST",
         body: data,
       }),
@@ -106,9 +110,13 @@ export const videosApi = apiSlice.injectEndpoints({
           // pessimistic cache update start
           if (query?.data?.id) {
             dispatch(
-              apiSlice.util.updateQueryData("getVideos", undefined, (draft) => {
-                draft.push(query.data);
-              })
+              apiSlice.util.updateQueryData(
+                "getClasses",
+                undefined,
+                (draft) => {
+                  draft.push(query.data);
+                }
+              )
             );
           }
           // pessimistic cache update end
@@ -118,10 +126,10 @@ export const videosApi = apiSlice.injectEndpoints({
   }),
 });
 export const {
-  useGetVideosQuery,
-  useGetVideoQuery,
-  useEditVideoMutation,
-  useUpdateVideoMutation,
-  useDeleteVideoMutation,
-  useAddVideoMutation,
-} = videosApi;
+  useGetClassesQuery,
+  useGetClassQuery,
+  useEditClassMutation,
+  useUpdateClassMutation,
+  useDeleteClassMutation,
+  useAddClassMutation,
+} = classesApi;

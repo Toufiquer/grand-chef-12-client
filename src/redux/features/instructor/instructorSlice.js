@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {};
 const instructorSlice = createSlice({
-  name: "videos",
+  name: "instructor",
   initialState,
   reducers: {},
 });

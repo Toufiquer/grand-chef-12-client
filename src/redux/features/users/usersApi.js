@@ -40,8 +40,8 @@ export const usersApi = apiSlice.injectEndpoints({
             "getInstructors",
             undefined,
             (draft) => {
-              const newValue = draft.concat(...arg.data);
-              Object.assign(draft, newValue);
+              draft.push(...arg.data);
+              // Object.assign(draft, newValue);
             }
           )
         );
