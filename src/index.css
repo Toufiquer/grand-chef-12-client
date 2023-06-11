@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+html {
+  scroll-behavior: smooth;
+}
 .TR-hero {
   background-image: url(https://i.ibb.co/BsXpQ0z/sta-je-html.jpg);
 }

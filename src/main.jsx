@@ -5,8 +5,12 @@ import { router } from "./router/router";
 
 // Import Swiper styles
 import "swiper/css";
+import { Provider } from "react-redux";
+import { store } from "./redux/app/store";
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
   // </React.StrictMode>
 );
