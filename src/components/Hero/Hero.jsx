@@ -16,7 +16,7 @@ const Hero = () => {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">
+            <h1 className="mb-5 text-5xl font-bold" data-aos="zoom-in">
               {import.meta.env.VITE_APP_NAME}
             </h1>
             <span className="text-6xl font-thin  text-center mb-2">
@@ -43,7 +43,9 @@ const Hero = () => {
               Campers can learn about sea creatures, explore tide pools, and go
               on boat trips to see dolphins and whales.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary" data-aos="zoom-in">
+              Get Started
+            </button>
           </div>
         </div>
       </div>

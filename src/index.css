@@ -4,6 +4,9 @@
 html {
   scroll-behavior: smooth;
 }
+body {
+  overflow-x: hidden;
+}
 .TR-hero {
   background-image: url(https://i.postimg.cc/L5hBBCqH/bg.jpg);
 }
