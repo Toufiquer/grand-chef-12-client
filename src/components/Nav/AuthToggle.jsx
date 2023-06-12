@@ -23,7 +23,7 @@ const AuthToggle = ({ user }) => {
       {/* Log In || Sign Out */}
       {!user ? (
         <>
-          <Link to="logIn" className="btn">
+          <Link to="/logIn" className="btn">
             Log In
           </Link>
         </>

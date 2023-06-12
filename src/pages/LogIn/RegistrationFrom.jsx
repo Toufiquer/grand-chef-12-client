@@ -143,7 +143,7 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
             {...register("pass", {
               required: true,
               min: 6,
-              pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.{8,})/i,
+              pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.{6,})/i,
             })}
             className="input input-bordered w-full max-w-xs"
           />
@@ -165,8 +165,8 @@ const RegistrationFrom = ({ isLogInPage, logInRegistrationToggle }) => {
           {errors.pass && (
             <label className="label">
               <span className="label-text-alt text-red-500">
-                Password is required,minimum 1 capital letter and have a special
-                character
+                Password is required,minimum 6 caractar, minimum 1 capital
+                letter and have a special character
               </span>
             </label>
           )}

@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useGetUserQuery } from "../../redux/features/users/usersApi";
 
 const NavLinks = ({ user }) => {
-  const [userRole, setUserRole] = useState({});
+  const [invoke, setInvoke] = useState(true);
+  const { data } = useGetUserQuery(user?.email, { skip: invoke });
+  console.log(data, user);
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/users/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => setUserRole(data.result));
+      setInvoke(false);
     }
   }, [user]);
   return (
@@ -22,28 +23,18 @@ const NavLinks = ({ user }) => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
-      {/* Not conditional Route Delete on production */}
-      <li>
-        <NavLink to="/adminDashboard">Admin Dashboard </NavLink>
-      </li>
-      <li>
-        <NavLink to="/studentDashboard">Student Dashboard </NavLink>
-      </li>
-      <li>
-        <NavLink to="/instructorDashboard">Instructor Dashboard </NavLink>
-      </li>
       {/* Conditional Route */}
-      {userRole.role === "admin" && (
+      {data?.role === "admin" && (
         <li>
           <NavLink to="/adminDashboard">Dashboard </NavLink>
         </li>
       )}
-      {userRole.role === "student" && (
+      {data?.role === "student" && (
         <li>
           <NavLink to="/studentDashboard">Dashboard </NavLink>
         </li>
-      )}{" "}
-      {userRole.role === "instructor" && (
+      )}
+      {data?.role === "instructor" && (
         <li>
           <NavLink to="/instructorDashboard">Dashboard </NavLink>
         </li>

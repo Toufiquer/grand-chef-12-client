@@ -12,7 +12,7 @@ import AdminChangeRoleBtn from "./AdminChangeRoleBtn";
 
 const AdminUserCard = ({ user }) => {
   const { _id, userName, email, role } = user || {};
-
+  console.log(user);
   const [filterUsers, setFilter] = useState("student");
   const [deleteUser, { isSuccess, isError, error, isLoading }] =
     useDeleteUserMutation();
