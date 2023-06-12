@@ -4,7 +4,7 @@ const ContactUs = () => {
       <div className="hero min-h-screen bg-base-200" data-aos="zoom-in">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold">Coming Soon!</h1>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
@@ -25,21 +25,20 @@ const ContactUs = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text">Message</span>
                 </label>
-                <input
+                <textarea
                   type="text"
-                  placeholder="password"
+                  placeholder="Your Message"
                   className="input input-bordered"
+                  cols={12}
+                  rows={12}
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary" disabled>
+                  Send
+                </button>
               </div>
             </div>
           </div>

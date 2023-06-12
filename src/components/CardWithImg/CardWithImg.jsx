@@ -14,7 +14,7 @@ const CardWithImg = ({ data }) => {
                 src={`${
                   photoURL
                     ? photoURL
-                    : "https://i.ibb.co/BsXpQ0z/sta-je-html.jpg"
+                    : "https://tr-portfolio-0.netlify.app/assets/img/skill-2.jpg"
                 } `}
                 alt={userName}
               />

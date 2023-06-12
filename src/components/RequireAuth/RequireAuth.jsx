@@ -5,11 +5,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 import { useGetUserQuery } from "../../redux/features/users/usersApi";
 
-const RequireAuth = ({ children, requireRole }) => {
+const RequireAuth = ({ children, requireRole = false }) => {
   const [invoke, setInvoke] = useState(true);
   let location = useLocation();
   const [user, loading, error] = useAuthState(auth);
-  const { data: userData } = useGetUserQuery(user?.email, { skip: invoke });
+  const { data } = useGetUserQuery(user?.email, { skip: invoke });
   useEffect(() => {
     if (user?.email) {
       setInvoke(false);
@@ -25,15 +25,19 @@ const RequireAuth = ({ children, requireRole }) => {
   if (!loading && !error) {
     content = children;
   }
-  // to invoke all route
-  if (!loading && !error && !(userData?.role === requireRole) && false) {
+  console.log(data?.role === requireRole);
+
+  if (data?.role === requireRole) {
+    return content;
+  }
+  if (!loading && !error && !user?.email) {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience
     // than dropping them off on the home page.
+
     return <Navigate to="/logIn" state={{ from: location }} replace />;
   }
-  return content;
 };
 
 export default RequireAuth;

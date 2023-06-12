@@ -6,7 +6,7 @@ import { useGetUserQuery } from "../../redux/features/users/usersApi";
 const NavLinks = ({ user }) => {
   const [invoke, setInvoke] = useState(true);
   const { data } = useGetUserQuery(user?.email, { skip: invoke });
-  console.log(data, user);
+
   useEffect(() => {
     if (user?.email) {
       setInvoke(false);

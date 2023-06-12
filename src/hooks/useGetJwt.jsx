@@ -9,7 +9,7 @@ const useGetJwt = (user, message) => {
   useGetUserQuery(user?.user?.email, { skip: invoke });
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:5000/jwt", {
+      fetch(`${import.meta.env.VITE_APP_API_URL}/jwt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...user }),
