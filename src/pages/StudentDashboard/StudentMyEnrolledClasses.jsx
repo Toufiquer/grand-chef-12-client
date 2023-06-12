@@ -1,10 +1,10 @@
-import swal from "sweetalert";
-import { useGetEnrolledClassesQuery } from "../../redux/features/enrolledClasses/enrolledClassesApi";
+import { useGetPaymentsQuery } from "../../redux/features/payment/paymentApi";
 import Loading from "../Loading/Loading";
-import StudentClassItem from "./StudentClassItem";
 
+import swal from "sweetalert";
+import StudentPaymentCart from "./StudentPaymentCart";
 const StudentMyEnrolledClasses = () => {
-  const { data, isLoading, isError, error } = useGetEnrolledClassesQuery();
+  const { data, isLoading, isError, error } = useGetPaymentsQuery();
   let content;
   if (isLoading && !isError) {
     content = <Loading />;
@@ -23,9 +23,11 @@ const StudentMyEnrolledClasses = () => {
   }
   let findCount = 0;
   if (!isLoading && !isError && data?.length > 0) {
-    findCount = data
-      .filter((curr) => curr.payment)
-      .map((curr) => <StudentClassItem key={curr._id} data={curr} />);
+    const sortData = [...data];
+    sortData.sort((a, b) => a.payTime - b.payTime);
+    findCount = sortData.map((curr) => (
+      <StudentPaymentCart key={curr._id} data={curr} />
+    ));
 
     content = <div className="flex flex-col gap-2">{findCount}</div>;
   }

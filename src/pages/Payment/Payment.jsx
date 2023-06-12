@@ -13,6 +13,7 @@ const Payment = () => {
   const [user, ,] = useAuthState(auth);
   // load class Data
   const { data, isLoading, isError, error } = useGetClassQuery(id);
+  console.log(data);
   const [addPayment, { isSuccess, isLoading2, isError2, error2 }] =
     useAddPaymentMutation();
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Payment = () => {
         buttons: true,
         dangerMode: true,
       });
-  }, [isSuccess, isError2, error2]);
+  }, [isSuccess, isError2, error2, navigate]);
   const {
     _id,
     email,
@@ -43,7 +44,8 @@ const Payment = () => {
     instructorName,
     photoUrl,
     price,
-  } = data || {};
+    seats,
+  } = (data?.length >= 1 && data[0]) || {};
   useEffect(() => {
     isError &&
       swal({
@@ -55,7 +57,13 @@ const Payment = () => {
       });
   }, [isError, error]);
   const handlePayment = () => {
-    addPayment({ ...data, userEmail: user?.email, payment: true });
+    data?.length >= 1 &&
+      addPayment({
+        ...data[0],
+        userEmail: user?.email,
+        payment: true,
+        payTime: new Date(),
+      });
   };
   return (
     <div>
@@ -75,23 +83,28 @@ const Payment = () => {
                   <div className="flex">
                     <div className="avatar">
                       <div className="w-24 rounded">
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        <img
+                          src={
+                            photoUrl ||
+                            "https://i.ibb.co/BsXpQ0z/sta-je-html.jpg"
+                          }
+                        />
                       </div>
                     </div>
                     <div className="flex flex-col gap-2">
                       <h2 className="px-2">
-                        <strong> Class name:</strong> {"userName"}
+                        <strong> Class name:</strong> {className}
                       </h2>
                       <h2 className="px-2">
                         <strong>Instructor name:</strong>{" "}
-                        {<span>{"email"}</span>},{" "}
+                        {<span>{instructorName}</span>},{" "}
                         <strong>Instructor email:</strong>{" "}
                         {<span>{"role"}</span>}
                       </h2>
                       <h2 className="px-2">
                         <strong> Available seats:</strong>{" "}
-                        {<span>{"role"}</span>}, <strong> Price:</strong>{" "}
-                        {<span>{"role"}</span>}
+                        {<span>{seats}</span>}, <strong> Price:</strong>{" "}
+                        {<span>{price}</span>}
                       </h2>
                     </div>
                   </div>
