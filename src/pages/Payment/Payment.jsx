@@ -1,12 +1,40 @@
 import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGetClassQuery } from "../../redux/features/classes/classesApi";
 import { useEffect } from "react";
 import swal from "sweetalert";
 import ConfirmBtn from "../../components/ConfirmBtn/ConfirmBtn";
+import { useAddPaymentMutation } from "../../redux/features/payment/paymentApi";
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 const Payment = () => {
   const { id } = useParams();
+  // load user data
+  const [user, ,] = useAuthState(auth);
+  // load class Data
   const { data, isLoading, isError, error } = useGetClassQuery(id);
+  const [addPayment, { isSuccess, isLoading2, isError2, error2 }] =
+    useAddPaymentMutation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    isSuccess &&
+      swal({
+        title: "Good Job!",
+        text: "Payment is complete",
+        icon: "success",
+        buttons: true,
+        dangerMode: false,
+      });
+    isSuccess && navigate("/studentDashboard/studentPaymentHistory");
+    isError2 &&
+      swal({
+        title: "Ops! something went wrong",
+        text: error2,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      });
+  }, [isSuccess, isError2, error2]);
   const {
     _id,
     email,
@@ -27,13 +55,7 @@ const Payment = () => {
       });
   }, [isError, error]);
   const handlePayment = () => {
-    swal({
-      title: "Good Job!",
-      text: "Payment is complete",
-      icon: "warning",
-      buttons: true,
-      dangerMode: false,
-    });
+    addPayment({ ...data, userEmail: user?.email, payment: true });
   };
   return (
     <div>
@@ -87,7 +109,11 @@ const Payment = () => {
               </div>
             </div>
           </div>
-          <ConfirmBtn name="payment" fnc={handlePayment} />
+          <ConfirmBtn
+            disabled={isLoading2 || isLoading}
+            name="payment"
+            fnc={handlePayment}
+          />
         </div>
       </DisplayCenter>
     </div>
