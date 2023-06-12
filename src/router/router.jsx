@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/payment/:email",
+    path: "/payment/:id",
     element: (
       <Main>
         <Payment />

@@ -6,7 +6,6 @@ import swal from "sweetalert";
 import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
 import ConfirmBtn from "../../components/ConfirmBtn/ConfirmBtn";
 const StudentClassItem = ({ data }) => {
-  console.log(data);
   const {
     _id,
     email,
@@ -70,11 +69,11 @@ const StudentClassItem = ({ data }) => {
             <DeleteBtn fnc={deleteFnc} isLoading={isLoading} />
 
             {payment ? (
-              <Link to="/Classes/Enrolled/:id" className="btn btn-accent">
+              <Link to="/Classes/Enrolled/id" className="btn btn-accent">
                 Class Video
               </Link>
             ) : (
-              <Link to="/payment/:email" className="btn btn-accent">
+              <Link to={`/payment/${_id}`} className="btn btn-accent">
                 Payment
               </Link>
             )}

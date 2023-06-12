@@ -23,9 +23,9 @@ const StudentMyEnrolledClasses = () => {
   }
   let findCount = 0;
   if (!isLoading && !isError && data?.length > 0) {
-    findCount = data.map((curr) => (
-      <StudentClassItem key={curr._id} data={curr} />
-    ));
+    findCount = data
+      .filter((curr) => curr.payment)
+      .map((curr) => <StudentClassItem key={curr._id} data={curr} />);
 
     content = <div className="flex flex-col gap-2">{findCount}</div>;
   }
@@ -36,7 +36,7 @@ const StudentMyEnrolledClasses = () => {
         <div className="border border-solid border-current rounded-lg px-4 py-2 flex items-center justify-between">
           <div className="flex flex-col gap-2">
             <h2 className="px-2">
-              <strong>Total Classes:</strong> {data?.length || 0}
+              <strong>Total Classes:</strong> {findCount?.length || 0}
             </h2>
           </div>
         </div>
